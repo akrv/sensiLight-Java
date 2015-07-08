@@ -36,7 +36,7 @@ public class SensiLight {
     int h,w,imageLen;
     //int[] redz,greenz,bluez;
     buffer = new byte[3];
-    SerialInit("COM9");
+    SerialInit("COM6");
     
     //start of while loop
     long startTime = System.currentTimeMillis();
