@@ -37,7 +37,7 @@ public class SensiLight {
     //int[] redz,greenz,bluez;
     buffer = new byte[3];
     SerialInit("COM6");
-    
+    while (true){
     //start of while loop
     long startTime = System.currentTimeMillis();
     Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
@@ -67,19 +67,17 @@ public class SensiLight {
     avgR = sumR/imageLen;
     avgG = sumG/imageLen;
     avgB = sumB/imageLen;
-    String values = avgR+","+avgG+","+avgB+"\r\n";
+    String values = avgR+","+avgG+","+avgB+".";
     
     
-    System.out.println (avgR); 
-    System.out.println (avgG); 
-    System.out.println (avgB); 
-    System.out.println (values);
+
     buffer[0]= (byte) avgR;
     buffer[1]= (byte) avgG;
     buffer[2]= (byte) avgB;
     buffer = values.getBytes();
     boolean writeBytes = serialPort.writeBytes(buffer);
-    SerialClose();
+    }
+    
    }
 
     //initialize the serialport
@@ -87,10 +85,10 @@ public class SensiLight {
         serialPort = new SerialPort(port);
         try {
             serialPort.openPort();
-            serialPort.setParams(   SerialPort.BAUDRATE_9600,
-                                    SerialPort.DATABITS_8,
-                                    SerialPort.STOPBITS_1,
-                                    SerialPort.PARITY_NONE);
+//            serialPort.setParams(   SerialPort.BAUDRATE_9600,
+//                                    SerialPort.DATABITS_8,
+//                                    SerialPort.STOPBITS_1,
+//                                    SerialPort.PARITY_NONE);
         } catch (SerialPortException ex) {
             System.out.println(ex);
         }
