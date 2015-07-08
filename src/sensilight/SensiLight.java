@@ -67,7 +67,7 @@ public class SensiLight {
     avgR = sumR/imageLen;
     avgG = sumG/imageLen;
     avgB = sumB/imageLen;
-    String values = avgR+","+avgG+","+avgB;
+    String values = avgR+","+avgG+","+avgB+"\r\n";
     
     
     System.out.println (avgR); 
@@ -77,6 +77,7 @@ public class SensiLight {
     buffer[0]= (byte) avgR;
     buffer[1]= (byte) avgG;
     buffer[2]= (byte) avgB;
+    buffer = values.getBytes();
     boolean writeBytes = serialPort.writeBytes(buffer);
     SerialClose();
    }
