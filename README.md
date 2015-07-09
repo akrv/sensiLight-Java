@@ -6,6 +6,7 @@ This should work with a performance of 40 - 50 milli seconds. Should work pretty
 The java program uses the following packages to finish get the ambilight to work.
   - [ColorThief by Sven Woltmann]
   - [JSSC by scream3r on google code] or [JSSC by scream3r]
+  - [Java AWT package]
   
 
 It uses one dominant color from the image. The output is formated for the arduino as 
@@ -15,8 +16,7 @@ It uses one dominant color from the image. The output is formated for the arduin
 
 #TODO
   - To split 30 leds for the regions of the screen
-  - Create faster interface that is platfrom independent
-  - 
+  - Create faster interface that is also platfrom independent
   
   
 [ambilight from Philips]:https://en.wikipedia.org/wiki/Ambilight
@@ -25,3 +25,4 @@ It uses one dominant color from the image. The output is formated for the arduin
 [JSSC by scream3r on google code]:https://code.google.com/p/java-simple-serial-connector/
 [Arduino Mega 2650]:https://www.arduino.cc/en/Main/arduinoBoardMega2560
 [serial port]:https://www.arduino.cc/en/Reference/Serial
+[Java AWT package]:http://docs.oracle.com/javase/7/docs/api/java/awt/package-summary.html
