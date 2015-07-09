@@ -30,6 +30,7 @@ public class SensiLight {
     static SerialPort serialPort;
     public static void main(String[] args) throws AWTException, SerialPortException{
     int[] dataBuffInt;
+    int counter = 0;
 //    int sumR = 0;
 //    int sumG = 0;
 //    int sumB = 0;
@@ -48,7 +49,7 @@ public class SensiLight {
 //    w = capture.getWidth();
 //    imageLen = w*h;
 //    dataBuffInt = capture.getRGB(0, 0, w, h, null, 0, w);
-    int[] color = ColorThief.getColor(capture,5,true);
+    int[] color = ColorThief.getColor(capture,10,false);
 //    int[] redz = new int[imageLen];
 //    int[] greenz = new int[imageLen];
 //    int[] bluez = new int[imageLen];
@@ -75,10 +76,12 @@ public class SensiLight {
 //    buffer[2]= (byte) avgB;
     buffer = values.getBytes();
     
-    boolean writeBytes = serialPort.writeBytes(buffer);
+    //boolean writeBytes = serialPort.writeBytes(buffer);
     System.out.println(System.nanoTime()-startTime);
+    counter++;
+    if (counter == 163){break;}
     }
-    
+    SerialClose();
    }
 
     //initialize the serialport
