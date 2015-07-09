@@ -29,7 +29,7 @@ public class SensiLight {
      */
  
     static SerialPort serialPort;
-    public static void main(String[] args) throws InterruptedException, SerialPortException, AWTException{
+    public static void main(String[] args) throws SerialPortException, AWTException{
     Runtime.getRuntime().addShutdownHook(new Message());
     int[] dataBuffInt;
     int counter = 0;
@@ -78,18 +78,9 @@ public class SensiLight {
 //    buffer[1]= (byte) avgG;
 //    buffer[2]= (byte) avgB;
     buffer = values.getBytes();
-<<<<<<< HEAD
     //System.out.println(values);
     boolean writeBytes = serialPort.writeBytes(buffer);
-=======
-    
-    
->>>>>>> origin/master
-//    System.out.println(System.nanoTime()-startTime);
-//    counter++;
-//    if (counter == 163){break;}
-    boolean writeBytes = serialPort.writeBytes(buffer);
-   }   
+    }   
 }
 
     //initialize the serialport
