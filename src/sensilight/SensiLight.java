@@ -49,7 +49,7 @@ public class SensiLight {
 //    w = capture.getWidth();
 //    imageLen = w*h;
 //    dataBuffInt = capture.getRGB(0, 0, w, h, null, 0, w);
-    int[] color = ColorThief.getColor(capture,1,true);
+    int[] color = ColorThief.getColor(capture,5,true);
 //    int[] redz = new int[imageLen];
 //    int[] greenz = new int[imageLen];
 //    int[] bluez = new int[imageLen];
@@ -75,7 +75,7 @@ public class SensiLight {
 //    buffer[1]= (byte) avgG;
 //    buffer[2]= (byte) avgB;
     buffer = values.getBytes();
-    
+    //System.out.println(values);
     boolean writeBytes = serialPort.writeBytes(buffer);
 //    System.out.println(System.nanoTime()-startTime);
 //    counter++;
