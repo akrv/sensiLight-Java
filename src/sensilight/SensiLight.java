@@ -27,8 +27,10 @@ public class SensiLight {
      * @param args the command line arguments
      * @throws java.awt.AWTException
      */
+ 
     static SerialPort serialPort;
-    public static void main(String[] args) throws AWTException, SerialPortException{
+    public static void main(String[] args) throws InterruptedException, SerialPortException, AWTException{
+    Runtime.getRuntime().addShutdownHook(new Message());
     int[] dataBuffInt;
     int counter = 0;
 //    int sumR = 0;
@@ -40,11 +42,12 @@ public class SensiLight {
     //int[] redz,greenz,bluez;
     buffer = new byte[11];
     SerialInit("COM6");
+    
     while (true){
+       
     //start of while loop
     //long startTime = System.nanoTime();
-    Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-    BufferedImage capture = new Robot().createScreenCapture(screenRect);
+    BufferedImage capture = getImage();
 //    h = capture.getHeight();
 //    w = capture.getWidth();
 //    imageLen = w*h;
@@ -76,13 +79,13 @@ public class SensiLight {
 //    buffer[2]= (byte) avgB;
     buffer = values.getBytes();
     
-    boolean writeBytes = serialPort.writeBytes(buffer);
+    
 //    System.out.println(System.nanoTime()-startTime);
 //    counter++;
 //    if (counter == 163){break;}
-    }
-//    SerialClose();
-   }
+    boolean writeBytes = serialPort.writeBytes(buffer);
+   }   
+}
 
     //initialize the serialport
     static void SerialInit(String port) {
@@ -105,5 +108,22 @@ public class SensiLight {
             System.out.println(ex);
         }
     }
+
+    private static BufferedImage getImage() throws AWTException {
+    Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+    BufferedImage capture = new Robot().createScreenCapture(screenRect);
+    return capture;
+    }
     
+       // a class that extends thread that is to be called when program is exiting
+   static class Message extends Thread {
+   @Override
+   public void run() {
+       SerialClose();
+   System.out.println("Bye.");
+   }
+   }
+
 }
+
+
