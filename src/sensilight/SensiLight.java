@@ -39,17 +39,17 @@ public class SensiLight {
 //    int h,w,imageLen;
     //int[] redz,greenz,bluez;
     buffer = new byte[11];
-    //SerialInit("COM6");
+    SerialInit("COM6");
     while (true){
     //start of while loop
-    long startTime = System.nanoTime();
+    //long startTime = System.nanoTime();
     Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
     BufferedImage capture = new Robot().createScreenCapture(screenRect);
 //    h = capture.getHeight();
 //    w = capture.getWidth();
 //    imageLen = w*h;
 //    dataBuffInt = capture.getRGB(0, 0, w, h, null, 0, w);
-    int[] color = ColorThief.getColor(capture,10,false);
+    int[] color = ColorThief.getColor(capture,1,true);
 //    int[] redz = new int[imageLen];
 //    int[] greenz = new int[imageLen];
 //    int[] bluez = new int[imageLen];
@@ -76,12 +76,12 @@ public class SensiLight {
 //    buffer[2]= (byte) avgB;
     buffer = values.getBytes();
     
-    //boolean writeBytes = serialPort.writeBytes(buffer);
-    System.out.println(System.nanoTime()-startTime);
-    counter++;
-    if (counter == 163){break;}
+    boolean writeBytes = serialPort.writeBytes(buffer);
+//    System.out.println(System.nanoTime()-startTime);
+//    counter++;
+//    if (counter == 163){break;}
     }
-    SerialClose();
+//    SerialClose();
    }
 
     //initialize the serialport
