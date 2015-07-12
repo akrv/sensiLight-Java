@@ -1,4 +1,4 @@
-# sensiLight-Java
+# sensyLight-Java
 A version of [ambilight from Philips] using Java for the system end.
 It uses the a led strip with 30 LEDs. Works with using a SPI like communication to the strip.
 The [Arduino Mega 2650] connects to the java interface using Serial Communication using the library for [serial port].
